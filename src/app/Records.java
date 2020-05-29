@@ -19,12 +19,12 @@ public class Records extends JDialog {
         add(txaRecords);
     }
 
-    public void lectura(){
-        try(Scanner sc = new Scanner(new File(home + "/.records.txt"))){
-            while(sc.hasNext()){
-                txaRecords.setText(txaRecords.getText()+"\n"+ sc.nextLine());
+    public void lectura() {
+        try (Scanner sc = new Scanner(new File(home + "/.records.txt"))) {
+            while (sc.hasNext()) {
+                txaRecords.setText(txaRecords.getText() + "\n" + sc.nextLine());
             }
-        } catch(IOException e){
+        } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "Non se pode ler o archivo", "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }

@@ -36,12 +36,12 @@ public class Guardar extends JDialog implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == btnOk || e.getSource() == txfNombre) {
-            if(txfNombre.getText().trim().length() > 0){
+            if (txfNombre.getText().trim().length() > 0) {
                 Loteria l = (Loteria) this.getOwner();
                 int esp = 30 - txfNombre.getText().length();
-    
+
                 try (PrintWriter f = new PrintWriter(new FileWriter(home + "/.records.txt", true))) {
-                    f.printf("%s%"+esp+"s", txfNombre.getText(), "Nº ");
+                    f.printf("%s%" + esp + "s", txfNombre.getText(), "Nº ");
                     for (int i = 0; i < l.aciertos.size(); i++) {
                         if (i < l.aciertos.size() - 1) {
                             f.print(l.aciertos.get(i) + ", ");
@@ -50,13 +50,15 @@ public class Guardar extends JDialog implements ActionListener {
                         }
                     }
                     esp = 25 - l.aciertos.toString().length();
-                    f.printf("%"+esp+"s Total: %d\n", " ", l.aciertos.size());
+                    f.printf("%" + esp + "s Total: %d\n", " ", l.aciertos.size());
                 } catch (IOException excep) {
-                    JOptionPane.showMessageDialog(null, "Non se pode gardar o archivo", "Erro", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Non se pode gardar o archivo", "Erro",
+                            JOptionPane.ERROR_MESSAGE);
                 }
                 dispose();
             } else {
-                JOptionPane.showMessageDialog(null, "Non introduciches ningún nome", "Información", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Non introduciches ningún nome", "Información",
+                        JOptionPane.INFORMATION_MESSAGE);
             }
 
         }

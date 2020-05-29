@@ -22,7 +22,6 @@ public class Loteria extends JFrame implements ItemListener, ActionListener {
     ArrayList<String> aciertos;
     private JButton btnReset;
 
-
     public Loteria() {
         setLayout(null);
 
@@ -55,7 +54,7 @@ public class Loteria extends JFrame implements ItemListener, ActionListener {
 
         btnReset = new JButton("Reset");
         btnReset.setSize(btnReset.getPreferredSize());
-        btnReset.setLocation(380,300);
+        btnReset.setLocation(380, 300);
         btnReset.addActionListener(this);
         add(btnReset);
 
@@ -68,13 +67,14 @@ public class Loteria extends JFrame implements ItemListener, ActionListener {
         aleatorios = new int[6];
 
         String titulo = "Lotería";
-        
-        tempTitulo = new Timer(300, new ActionListener(){
+
+        tempTitulo = new Timer(300, new ActionListener() {
             int letra = 0;
+
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(letra <=  titulo.length()-1){
-                    setTitle(getTitle()+titulo.charAt(letra)+"");
+                if (letra <= titulo.length() - 1) {
+                    setTitle(getTitle() + titulo.charAt(letra));
                     letra++;
                 } else {
                     setTitle("");
@@ -139,28 +139,28 @@ public class Loteria extends JFrame implements ItemListener, ActionListener {
             comprobacion();
         }
 
-        if(e.getSource() == mnuGuardar){
+        if (e.getSource() == mnuGuardar) {
             Guardar s = new Guardar(this);
             s.pack();
             s.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             s.setVisible(true);
         }
 
-        if(e.getSource() == mnuRecords){
+        if (e.getSource() == mnuRecords) {
             Records r = new Records();
-            r.setSize(500,500);
+            r.setSize(500, 500);
             r.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             r.setVisible(true);
         }
 
-        if(e.getSource() == btnReset){
+        if (e.getSource() == btnReset) {
             reseteo();
         }
     }
 
-    public void comprobacion(){
+    public void comprobacion() {
         aciertos.clear();
-        for(int i = 0; i < chkConj.length; i++){
+        for (int i = 0; i < chkConj.length; i++) {
             chkConj[i].setForeground(Color.BLACK);
         }
         for (int i = 0; i < aleatorios.length; i++) {
@@ -177,13 +177,13 @@ public class Loteria extends JFrame implements ItemListener, ActionListener {
                         if (Integer.parseInt(chkConj[k].getText()) == seleccion.get(j)) {
                             if (chkConj[k].getForeground() != Color.green) {
                                 chkConj[k].setForeground(Color.red);
-                            } 
-                        } 
+                            }
+                        }
                     }
                 }
             }
         }
-        
+
     }
 
     public void numAleatorios() {
@@ -203,8 +203,8 @@ public class Loteria extends JFrame implements ItemListener, ActionListener {
         lblNumerosAleat.setVisible(true);
     }
 
-    public void reseteo(){
-        for(int i = 0; i < chkConj.length; i++){
+    public void reseteo() {
+        for (int i = 0; i < chkConj.length; i++) {
             chkConj[i].setSelected(false);
             chkConj[i].setForeground(Color.BLACK);
         }
